@@ -1,9 +1,18 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cstdlib> // to clearScreen
 
-const int MAX_BOOKS = 100;
+const int MAX_BOOKS = 50;
 const int MAX_USERS = 10;
+
+void clearScreen() {
+    #ifdef _WIN32
+        system("cls");// for windows
+    #else
+        system("clear");//for linux
+    #endif
+}
 
 class Book {
 private:
@@ -429,6 +438,7 @@ int main() {
     int choice;
     
     do {
+        clearScreen(); // Added to clear the terminal before showing menu
         displayMenu();
         std::cin >> choice;
         std::cin.ignore();
@@ -504,6 +514,11 @@ int main() {
                 break;
             default:
                 std::cout << "Invalid choice. Please try again.\n";
+        }
+        
+        if (choice != 10) {
+            std::cout << "\nPress Enter to continue...";
+            std::cin.get();
         }
     } while (choice != 10);
     
