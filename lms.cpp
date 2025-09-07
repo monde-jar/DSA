@@ -173,8 +173,8 @@ public:
     }
 
     ~Library() {
-        saveBooksToFile();
-        saveUsersToFile();
+        saveBooksToFile();//as the word says
+        saveUsersToFile();//this too
         for (int i = 0; i < bookCount; i++) {
             delete books[i];
         }
@@ -216,29 +216,29 @@ public:
     }
 
     void saveBooksToFile() {
-        ofstream file(booksFile.c_str());
+        ofstream file(booksFile.c_str());//opens da file
         if (!file.is_open()) {
             cerr << "Error: Could not save books to file.\n";
             return;
         }
 
         for (int i = 0; i < bookCount; i++) {
-            file << books[i]->toString() << "\n";
+            file << books[i]->toString() << "\n";//writen the files
         }
-        file.close();
+        file.close();//then saved
     }
 
     void saveUsersToFile() {
-        ofstream file(usersFile.c_str());
+        ofstream file(usersFile.c_str());//same lang
         if (!file.is_open()) {
             cerr << "Error: Could not save users to file.\n";
             return;
         }
 
         for (int i = 0; i < userCount; i++) {
-            file << users[i]->toString() << "\n";
+            file << users[i]->toString() << "\n";//ganon din
         }
-        file.close();
+        file.close();//this too
     }
 
     void addBook(const string& title, const string& author, const string& ISBN) {
@@ -521,7 +521,7 @@ int main() {
                 cout << "\nInvalid choice. Please try again.\n";
         }
         
-        // Pause after each operation except clear screen and exit
+        // pause after each operation except clear screen then exit
         if (choice != 10 && choice != 11) {
             cout << "\nPress Enter to continue...";
             cin.get();
